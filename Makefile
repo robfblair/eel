@@ -15,6 +15,12 @@ all : t.exe # test
 t.ll : src/Eel.hs test/Spec.hs
 	stack runghc test/Spec.hs
 
+hello-world.ll : src/Eel.hs examples/Hello-world.hs
+	stack runghc examples/Hello-world.hs
+
+hello-world.exe : hello-world.s
+	clang -o $@ $^
+
 hello-a.ll : src/Eel.hs examples/Hello-a.hs
 	stack runghc examples/Hello-a.hs
 
