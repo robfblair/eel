@@ -15,6 +15,12 @@ all : t.exe # test
 t.ll : src/Eel.hs test/Spec.hs
 	stack runghc test/Spec.hs
 
+hello-a.ll : src/Eel.hs examples/Hello-a.hs
+	stack runghc examples/Hello-a.hs
+
+hello-a.exe : hello-a.s
+	clang -o $@ $^
+
 %.s : %.ll
 	llc -fatal-assembler-warnings $<
 
